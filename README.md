@@ -29,7 +29,7 @@ How to host a Laravel application on AWS Elastic Beanstalk
 #### 5) Install Elastic Beanstalk CLI on your local PC
 - On MacOS this is simple with Homebrew; <i>brew install awsebcli</i>
 
-#### 6) Initialise the EB instance
+#### 6) Initialise the EBS instance
 - From the CLI on your local PC, navigate to the root of your project
 - Start the initialisation wizard; <i>eb init</i>
 
@@ -41,7 +41,7 @@ How to host a Laravel application on AWS Elastic Beanstalk
 
 #### 7) Create an EBS environment options file
 - Create a new file in the .elasticbeanstalk directory of your project with the following name;<br> 
-<i>optionsettings.environment-name</i>
+<i>'optionsettings.environment-name'</i>
 - Add the following code to the file;
 ```
 [aws:autoscaling:asg]
@@ -90,7 +90,7 @@ Notification Endpoint=
 Notification Protocol=email
 ```
 #### 8) Create an Environment Variables file
-- Create a new file in the .elasticbeanstalk directory of your project with the following name;<br> <i>00environmentVariables.config</i>
+- Create a new file in the .elasticbeanstalk directory of your project with the following name;<br> <i>'00environmentVariables.config'</i>
 - Add the following code to the file;
 ```
 option_settings:
@@ -108,7 +108,7 @@ option_settings:
 ```
 #### 9) Create a Composer Config file
 - Create a new file in the .elasticbeanstalk directory of your project with the following name;<br>
-<i>01composer.config</i>
+<i>'01composer.config'</i>
 - Add the following code to the file;
 ```
 commands:
@@ -126,7 +126,7 @@ container_commands:
 ```
 #### 10) Create a Artisan Config file
 - Create a new file in the .elasticbeanstalk directory of your project with the following name;<br>
-<i>02artisan.config</i>
+<i>'02artisan.config'</i>
 - Add the following code to the file;
 ```
 container_commands:
@@ -136,18 +136,18 @@ container_commands:
       command: "php artisan db:seed --force"
 ```
 #### 11) Edit your application database config file
-- Edit the <i>database.php</i> file in the <i>config</i> directory of your project with the following changes;
+- Edit the <i>'database.php'</i> file in the <i>config</i> directory of your project with the following changes;
 ```
-		'mysql' => array(
-			'driver'    => 'mysql',
-			'host'      => $_ENV['DB_HOST'],
-			‘port’	=> $_ENV['DB_PORT’],
-			'database'  => $_ENV['DB_NAME'],
-			'username'  => $_ENV['DB_USER'],
-			'password'  => $_ENV['DB_PASS'],
-			'charset'   => 'utf8',
-			'collation' => 'utf8_unicode_ci',
-			'prefix'    => '',
-		),
+        'mysql' => [
+            'driver' => 'mysql',
+            'host' => $_ENV['DB_HOST'],
+            'port' => $_ENV['DB_PORT'],
+            'database' => $_ENV['DB_NAME'],
+            'username' => $_ENV['DB_USER'],
+            'password' => $_ENV['DB_PASS'],
+            'charset' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix' => '',
+        ],
 ```
 

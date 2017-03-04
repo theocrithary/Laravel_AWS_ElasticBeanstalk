@@ -14,6 +14,7 @@ How to host a Laravel application on AWS Elastic Beanstalk
 - Choose default VPC
 - Provide a DB Name
 - Change backup retention to 0 if you do not need backups
+
 #### 3) Create a new IAM User
 ##### I used the below settings;
 - Acces type = Programmatic access

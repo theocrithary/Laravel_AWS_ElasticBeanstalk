@@ -26,6 +26,16 @@ How to host a Laravel application on AWS Elastic Beanstalk
 - From the EC2 dashboard --> network & security --> Key pairs --> Create key pairs
 - Provide a name and download the .pem file (store securely for use later on)
 
-#### 5) Install Elastic Beanstalk CLI
+#### 5) Install Elastic Beanstalk CLI on your local PC
 - On MacOS this is simple with Homebrew; <i>brew install awsebcli</i>
+
+#### 6) Initialise the EB instance
+- From the CLI on your local PC, navigate to the root of your project
+- Start the initialisation wizard; <i>eb init</i>
+
+##### I used the below settings
+- Default region (3); us-west-2
+- Name your App and Environment
+- Select 'Y' to PHP and choose PHP version 7.0
+- Setup SSH and select the keypair created earlier
 

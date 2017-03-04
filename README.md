@@ -150,4 +150,6 @@ container_commands:
             'prefix' => '',
         ],
 ```
-
+eb init
+eb create
+eb open

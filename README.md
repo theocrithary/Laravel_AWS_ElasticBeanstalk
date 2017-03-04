@@ -21,8 +21,11 @@ How to host a Laravel application on AWS Elastic Beanstalk
 - Create new group and add the following permissions; AmazonRDSFullAccess, AWSElasticBeanstalkFullAccess
 - Make sure the new user is added to the group
 - Create an access key for the user and keep the 'key id' and 'secret access key' in a safe place or download the csv and store securely
+
 #### 4) Create an EC2 keypair
 - From the EC2 dashboard --> network & security --> Key pairs --> Create key pairs
 - Provide a name and download the .pem file (store securely for use later on)
+
 #### 5) Install Elastic Beanstalk CLI
 - brew install awsebcli
+

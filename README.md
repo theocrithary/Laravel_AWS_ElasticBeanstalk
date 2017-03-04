@@ -42,6 +42,7 @@ How to host a Laravel application on AWS Elastic Beanstalk
 #### 7) Create an EBS environment options file
 - Create a new file in the .elasticbeanstalk directory of your project with the following name; <i>optionsettings.environment-name</i>
 - Add the following code the options file;
+```
 [aws:autoscaling:asg]
 Custom Availability Zones=us-west-2a (use the same AZ as used for the MySQL RDS instance deployed earlier)
 MaxSize=1
@@ -86,3 +87,20 @@ Automatically Terminate Unhealthy Instances=true
 [aws:elasticbeanstalk:sns:topics]
 Notification Endpoint=
 Notification Protocol=email
+```
+#### 8) Create an Environment Variable file
+- Create
+```
+option_settings:
+   - namespace: aws:elasticbeanstalk:application:environment
+     option_name: DB_HOST
+     value: mysqldbname.dragegavysop.us-east-1.rds.amazonaws.com
+   - option_name: DB_PORT
+     value: 3306
+   - option_name: DB_NAME
+     value: dbname
+   - option_name: DB_USER
+     value: username
+   - option_name: DB_PASS
+     value: password
+```

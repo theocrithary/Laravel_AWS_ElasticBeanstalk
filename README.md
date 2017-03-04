@@ -41,7 +41,7 @@ How to host a Laravel application on AWS Elastic Beanstalk
 
 #### 7) Create an EBS environment options file
 - Create a new file in the .elasticbeanstalk directory of your project with the following name; <i>optionsettings.environment-name</i>
-- Add the following code the options file;
+- Add the following code to the file;
 ```
 [aws:autoscaling:asg]
 Custom Availability Zones=us-west-2a (use the same AZ as used for the MySQL RDS instance deployed earlier)
@@ -88,8 +88,9 @@ Automatically Terminate Unhealthy Instances=true
 Notification Endpoint=
 Notification Protocol=email
 ```
-#### 8) Create an Environment Variable file
-- Create
+#### 8) Create an Environment Variables file
+- Create a new file in the .elasticbeanstalk directory of your project with the following name; <i>00environmentVariables.config</i>
+- Add the following code to the file;
 ```
 option_settings:
    - namespace: aws:elasticbeanstalk:application:environment
@@ -103,4 +104,31 @@ option_settings:
      value: username
    - option_name: DB_PASS
      value: password
+```
+#### 9) Create a Composer Config file
+- Create a new file in the .elasticbeanstalk directory of your project with the following name; <i>01composer.config</i>
+- Add the following code to the file;
+```
+commands:
+   01updateComposer:
+      command: export COMPOSER_HOME=/root && /usr/bin/composer.phar self-update
+
+option_settings:
+   - namespace: aws:elasticbeanstalk:application:environment
+     option_name: COMPOSER_HOME
+     value: /root
+
+container_commands:
+   01optimize:
+      command: "/usr/bin/composer.phar dump-autoload --optimize"
+```
+#### 10) Create a Artisan Config file
+- Create a new file in the .elasticbeanstalk directory of your project with the following name; <i>02artisan.config</i>
+- Add the following code to the file;
+```
+container_commands:
+   01migrateSeed:
+      command: "php artisan migrate --force"
+   02seed:
+      command: "php artisan db:seed --force"
 ```

@@ -2,6 +2,16 @@
 How to host a Laravel application on AWS Elastic Beanstalk
 
 #### 1) Create an AWS account if you don't already have one
+#### 2) Create a CodeCommit repo
+- At the terminal, paste the following commands:
+```
+git config --global credential.helper '!aws codecommit credential-helper $@'
+git config --global credential.UseHttpPath true
+```
+- Clone your repository to your local computer and start working on code:
+```
+git clone https://git-codecommit.us-west-2.amazonaws.com/v1/repos/MyFinances
+```
 #### 2) Create an RDS instance
 ##### I used a MySQL instance with the following settings;
 - Dev/Test (to be eligible for free tier)
